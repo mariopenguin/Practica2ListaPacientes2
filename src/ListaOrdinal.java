@@ -68,27 +68,36 @@ class ListaOrdinal {
         }
         return aux.getPaciente();
     }
-    public void borrarAltas(){
-        Iterador iterador = obtenerIterador();
-        while (iterador.hasNext()){
-            Paciente paciente = iterador.next();
-            if (paciente.estaAlta()){
-                borrar(paciente);
+    public void borrar(Paciente paciente) {
+        Nodo actual = inicio;
+        Nodo anterior = null;
+        while (actual != null ){
+            if (actual.getPaciente() ==  paciente) {  // Borrar actual
+                if (actual != inicio) {
+                    anterior.setSiguiente(actual.getSiguiente());
+                } else {
+                    inicio = actual.getSiguiente();
+                }
+                if (actual == fin) {  // se borra el último
+                    fin = anterior;
+                }
                 numElementos--;
+            } else {
+                anterior = actual;
             }
+            actual = actual.getSiguiente();
         }
-
     }
     /** Borra el primer elemento de la lista cuyo dato coincide con el
      * parámetro recibido.
      */
 
 
-    public void borrar(Paciente paciente) {
+    public void borrarAltas() {
         Nodo actual = inicio;
         Nodo anterior = null;
         while (actual != null ){
-            if (actual.getPaciente() ==  paciente) {  // Borrar actual
+            if (actual.getPaciente().estaAlta()) {  // Borrar actual
                 if (actual != inicio) {
                     anterior.setSiguiente(actual.getSiguiente());
                 } else {
