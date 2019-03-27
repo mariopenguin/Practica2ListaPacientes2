@@ -31,6 +31,8 @@ public class Aplicacion {
 
         return listasintomas;
     }
+
+
     public static void main(String[] args) {
     Paciente alberto = new Paciente("Alberto","Frecuentes mareos");
         Paciente ana = new Paciente("Ana","Infeccion resistente");
@@ -40,13 +42,16 @@ public class Aplicacion {
         ListaOrdinal listaOrdinal = new ListaOrdinal();
         listaOrdinal.insertar(alberto);listaOrdinal.insertar(ana);listaOrdinal.insertar(eva);listaOrdinal.insertar(ernesto);
         ana.darAlta(); eva.darAlta();
+        System.out.println("---Damos altas---");
         verLista(listaOrdinal);
+        System.out.println("---Borramos altas---");
         listaOrdinal.borrarAltas();
         verLista(listaOrdinal);
+        System.out.println("---Insertamos a ana y eva dadas de alta");
         listaOrdinal.insertar(ana);listaOrdinal.insertar(eva);
         verAltas(listaOrdinal);
 
-        ListaOrdinal listaSintomas = pacientesSintoma(listaOrdinal,"Infeccion");
+        ListaOrdinal listaSintomas = pacientesSintoma(listaOrdinal,"mareo");
 
         System.out.println("---Buscar por enfermedad---");
         verLista(listaSintomas);
